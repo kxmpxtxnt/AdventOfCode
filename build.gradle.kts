@@ -12,7 +12,7 @@ subprojects {
   apply(plugin = "org.jetbrains.kotlin.jvm")
 
   dependencies {
-    if (project.name != "commonKotlin") implementation(project(":common:commonKotlin"))
+    if (project.name != "kotlinCommon") implementation(project(":common:kotlinCommon"))
     implementation("com.github.ajalt.mordant", "mordant", "3.0.1")
   }
 }

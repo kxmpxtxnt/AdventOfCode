@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../../2024" dumb="true">
+      <sourceFolder url="file://$MODULE_DIR$/../../../2024/rust2024/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../2024/rust2024/target" />
+    </content>
+  </component>
+</module>

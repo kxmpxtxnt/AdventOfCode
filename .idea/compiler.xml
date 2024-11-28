@@ -2,9 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="AdventOfCode.2024.2024Kotlin" target="21" />
+      <module name="AdventOfCode.2024.2024Kotlin.main" target="21" />
+      <module name="AdventOfCode.2024.2024Kotlin.test" target="21" />
       <module name="AdventOfCode.2024.kotlin" target="21" />
       <module name="AdventOfCode.2024.kotlin.main" target="21" />
       <module name="AdventOfCode.2024.kotlin.test" target="21" />
+      <module name="AdventOfCode.common.commonKotlin" target="21" />
+      <module name="AdventOfCode.common.commonKotlin.main" target="21" />
+      <module name="AdventOfCode.common.commonKotlin.test" target="21" />
       <module name="AdventOfCode.common.kotlin" target="21" />
       <module name="AdventOfCode.common.kotlin.main" target="21" />
       <module name="AdventOfCode.common.kotlin.test" target="21" />

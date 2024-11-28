@@ -10,9 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/2024" />
-            <option value="$PROJECT_DIR$/2024/2024Kotlin" />
+            <option value="$PROJECT_DIR$/2024/kotlin2024" />
             <option value="$PROJECT_DIR$/common" />
-            <option value="$PROJECT_DIR$/common/commonKotlin" />
+            <option value="$PROJECT_DIR$/common/kotlinCommon" />
           </set>
         </option>
       </GradleProjectSettings>
