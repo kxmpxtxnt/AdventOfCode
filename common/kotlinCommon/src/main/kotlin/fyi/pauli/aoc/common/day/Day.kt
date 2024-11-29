@@ -26,7 +26,7 @@ data class Day(
   }
 
   fun second(block: () -> String) {
-    first = block
+    second = block
   }
 
   fun executePart(part: () -> String) {
