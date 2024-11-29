@@ -1,11 +1,13 @@
 package fyi.pauli.aoc.common.day
 
-import com.github.ajalt.mordant.rendering.TextColors
+import com.github.ajalt.mordant.rendering.TextColors.*
+import com.github.ajalt.mordant.rendering.TextStyles.italic
 import com.github.ajalt.mordant.terminal.info
 import fyi.pauli.aoc.common.AdventOfCode
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 import kotlin.io.path.readText
+import kotlin.time.measureTimedValue
 
 data class Day(
   val day: Int,
@@ -19,20 +21,28 @@ data class Day(
   val inputWords: List<String> by lazy { input.split(" ") }
 
   private var first: () -> String = { "" }
-  private val second: () -> String = { "" }
+  private var second: () -> String = { "" }
 
   fun first(block: () -> String) {
     first = block
   }
 
   fun second(block: () -> String) {
-    first = block
+    second = block
   }
 
-  fun executePart(part: () -> String) {
+  private fun executePart(part: () -> String) {
     val partNumber = if (part == first) 1 else 2
+    val result = measureTimedValue(part)
     advent.terminal.info(
-      advent.prefix + TextColors.white("Executing part $partNumber")
+      advent.prefix +
+          white("Result for part ") +
+          brightGreen(partNumber.toString()) +
+          white(" is ") +
+          (italic + brightRed)(result.value) +
+          white(". Took ") +
+          brightGreen("${result.duration.inWholeMilliseconds}ms") +
+          white(".")
     )
   }
 
