@@ -7,6 +7,7 @@ import com.github.ajalt.mordant.rendering.TextStyles.reset
 import com.github.ajalt.mordant.terminal.Terminal
 import com.github.ajalt.mordant.terminal.prompt
 import fyi.pauli.aoc.common.day.Day
+import kotlin.system.exitProcess
 
 data class AdventOfCode(
   val year: Int,
@@ -27,11 +28,16 @@ data class AdventOfCode(
   internal fun input() {
     while (true) {
       val dayNumber =
-        terminal.prompt(prefix + white("Day: "), showChoices = true, choices = days.map(Day::day).map(Int::toString))
-          ?.toInt()
+        terminal.prompt(prefix + white("Day: "), showChoices = true, choices = days.map(Day::day).map(Int::toString).toMutableList().apply {
+          add("exit")
+        })
+
+      if (dayNumber == "exit") {
+        exitProcess(0)
+      }
 
       if (dayNumber == null) return
-      days.find { it.day == dayNumber }!!.execute()
+      days.find { it.day == dayNumber.toInt() }!!.execute()
     }
   }
 }
