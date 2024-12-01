@@ -23,12 +23,12 @@ data class AdventOfCode(
     AnsiLevel.TRUECOLOR
   )
 
-  internal val days: MutableSet<Day> = mutableSetOf()
+  internal val internalDays: MutableList<Day> = mutableListOf()
 
   internal fun input() {
     while (true) {
       val dayNumber =
-        terminal.prompt(prefix + white("Day: "), showChoices = true, choices = days.map(Day::day).map(Int::toString).toMutableList().apply {
+        terminal.prompt(prefix + white("Day: "), showChoices = true, choices = internalDays.map(Day::day).map(Int::toString).toMutableList().apply {
           add("exit")
         })
 
@@ -37,13 +37,17 @@ data class AdventOfCode(
       }
 
       if (dayNumber == null) return
-      days.find { it.day == dayNumber.toInt() }!!.execute()
+      internalDays.find { it.day == dayNumber.toInt() }!!.execute()
     }
   }
 }
 
 operator fun AdventOfCode.plusAssign(day: Day) {
-  days += day
+  internalDays += day
+}
+
+operator fun AdventOfCode.plusAssign(days: Collection<Day>) {
+  internalDays += days
 }
 
 
