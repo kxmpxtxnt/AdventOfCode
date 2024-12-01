@@ -33,7 +33,7 @@ val AdventOfCode.first: Day
         overall += abs(r - l)
       }
 
-      overall.toString()
+      overall
     }
 
     second {
