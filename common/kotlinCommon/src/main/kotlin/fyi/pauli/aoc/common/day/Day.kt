@@ -16,22 +16,22 @@ data class Day(
 
   private val inputPath by lazy { Path("./inputs/${advent.year}").resolve(day.toString().padStart(2, '0') + ".txt") }
 
-  val inputList: List<String> by lazy { inputPath.readLines() }
+  val inputLines: List<String> by lazy { inputPath.readLines() }
   val input: String by lazy { inputPath.readText() }
   val inputWords: List<String> by lazy { input.split(" ") }
 
-  private var first: () -> String = { "" }
-  private var second: () -> String = { "" }
+  private var first: () -> Any = { "" }
+  private var second: () -> Any = { "" }
 
-  fun first(block: () -> String) {
+  fun first(block: () -> Any) {
     first = block
   }
 
-  fun second(block: () -> String) {
+  fun second(block: () -> Any) {
     second = block
   }
 
-  private fun executePart(part: () -> String) {
+  private fun executePart(part: () -> Any) {
     val partNumber = if (part == first) 1 else 2
     val result = measureTimedValue(part)
     advent.terminal.info(
@@ -39,7 +39,7 @@ data class Day(
           white("Result for part ") +
           brightGreen(partNumber.toString()) +
           white(" is ") +
-          (italic + brightRed)(result.value) +
+          (italic + brightRed)(result.value.toString()) +
           white(". Took ") +
           brightGreen("${result.duration.inWholeMilliseconds}ms") +
           white(".")

@@ -45,6 +45,6 @@ val AdventOfCode.first: Day
         right.removeIf { i -> i == t  }
       }
 
-      overall.toString()
+      overall
     }
   }
