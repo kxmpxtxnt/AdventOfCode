@@ -18,7 +18,6 @@ data class Day(
 
   val inputLines: List<String> by lazy { inputPath.readLines() }
   val input: String by lazy { inputPath.readText() }
-  val inputWords: List<String> by lazy { input.split(" ") }
 
   private var first: () -> Any = { "" }
   private var second: () -> Any = { "" }
