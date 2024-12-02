@@ -15,8 +15,7 @@ val AdventOfCode.first: Day
     first {
       left.zip(right).sumOf { (l, r) -> abs(r - l) }
     }
-
-
+    
     second {
       left.groupingBy { it }.eachCount().entries.sumOf { (value, count) ->
         value * count
