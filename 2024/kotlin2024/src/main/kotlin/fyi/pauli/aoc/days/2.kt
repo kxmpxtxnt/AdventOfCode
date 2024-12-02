@@ -6,23 +6,30 @@ import fyi.pauli.aoc.common.day.day
 
 val AdventOfCode.second: Day
   get() = day(this, 2) {
-    fun valid(report: List<Int>): Boolean {
+    var reports = inputLines.map { report -> report.split(" ").map(String::toInt) }.toMutableList()
+
+    fun valid(report: List<Int>): Int {
       val hasIncreased = report[1] > report[0]
+      var problems = 0
       report.forEachIndexed { index, current ->
         if (hasIncreased && !(1..3).contains(current - report.getOrElse(index - 1) { return@forEachIndexed }))
-          return false
+          problems++
         if (!hasIncreased && !(1..3).contains(report.getOrElse(index - 1) { return@forEachIndexed } - current))
-          return false
+          problems++
       }
 
-      return true
+      return problems
     }
 
     first {
-      inputLines.map { report -> report.split(" ").map(String::toInt) }.count(::valid)
+      reports.count {
+        valid(it) == 0
+      }
     }
 
     second {
-
+      reports.count {
+        valid(it) <= 1
+      }
     }
   }
