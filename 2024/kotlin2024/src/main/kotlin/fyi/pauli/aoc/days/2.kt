@@ -9,8 +9,10 @@ val AdventOfCode.second: Day
     fun valid(report: List<Int>): Boolean {
       val hasIncreased = report[1] > report[0]
       report.forEachIndexed { index, current ->
-        if (hasIncreased && !(1..3).contains(current - report.getOrElse(index - 1) { return@forEachIndexed })) return false
-        if (!hasIncreased && !(1..3).contains(report.getOrElse(index - 1) { return@forEachIndexed } - current)) return false
+        if (hasIncreased && !(1..3).contains(current - report.getOrElse(index - 1) { return@forEachIndexed }))
+          return false
+        if (!hasIncreased && !(1..3).contains(report.getOrElse(index - 1) { return@forEachIndexed } - current))
+          return false
       }
 
       return true
