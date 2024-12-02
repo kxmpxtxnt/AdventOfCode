@@ -10,15 +10,12 @@ val AdventOfCode.second: Day
 
     fun valid(report: List<Int>): Int {
       val hasIncreased = report[1] > report[0]
-      var problems = 0
-      report.forEachIndexed { index, current ->
-        if (hasIncreased && !(1..3).contains(current - report.getOrElse(index - 1) { return@forEachIndexed }))
-          problems++
-        if (!hasIncreased && !(1..3).contains(report.getOrElse(index - 1) { return@forEachIndexed } - current))
-          problems++
+      return report.zipWithNext().count { (prev, current) ->
+        val delta = if (hasIncreased) current - prev else prev - current
+
+        delta !in 1..3
       }
 
-      return problems
     }
 
     first {
