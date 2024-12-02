@@ -22,14 +22,10 @@ val AdventOfCode.second: Day
     }
 
     first {
-      reports.count {
-        valid(it) == 0
-      }
+      reports.count { valid(it) == 0 }
     }
 
     second {
-      reports.count {
-        valid(it) <= 1
-      }
+      reports.count { valid(it) <= 1 }
     }
   }
