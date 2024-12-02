@@ -6,7 +6,7 @@ import fyi.pauli.aoc.common.day.day
 
 val AdventOfCode.second: Day
   get() = day(this, 2) {
-    var reports = inputLines.map { report -> report.split(" ").map(String::toInt) }.toMutableList()
+    var reports = inputLines.map { report -> report.split(" ").map(String::toInt) }
 
     fun problems(report: List<Int>): Int {
       val hasIncreased = report[1] > report[0]
