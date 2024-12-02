@@ -7,35 +7,19 @@ import kotlin.math.abs
 
 val AdventOfCode.first: Day
   get() = day(this, 1) {
-    fun leftRight(): Pair<MutableList<Int>, MutableList<Int>> {
-      val (left, right) = (0..1).map { i ->
-        inputLines.map { l -> l.split("   ")[i].toInt() }.sorted()
-      }
-      return left.toMutableList() to right.toMutableList()
+
+    val (left, right) = (0..1).map {
+      inputLines.map { line -> line.split("   ")[it].toInt() }.sorted()
     }
 
     first {
-      val (left, right) = leftRight()
-      var overall = 0
-
-      while (left.isNotEmpty() || right.isNotEmpty()) {
-        val l = left.removeFirst()
-        val r = right.removeFirst()
-        overall += abs(r - l)
-      }
-
-      overall
+      left.zip(right).sumOf { (l, r) -> abs(r - l) }
     }
 
+
     second {
-      val (left, right) = leftRight()
-      var overall = 0
-
-      left.forEach { t ->
-        overall += t * right.count { i -> i == t }
-        right.removeIf { i -> i == t }
+      left.groupingBy { it }.eachCount().entries.sumOf { (value, count) ->
+        value * count
       }
-
-      overall
     }
   }
