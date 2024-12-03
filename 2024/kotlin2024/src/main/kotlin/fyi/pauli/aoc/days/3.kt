@@ -7,13 +7,23 @@ import fyi.pauli.aoc.common.day.day
 val AdventOfCode.third: Day
   get() = day(this, 3) {
 
-    val pattern = Regex(pattern = "mul\\((\\s*\\d+\\s*),(\\s*\\d+\\s*)\\)")
+    val mul = Regex(pattern = "mul\\((\\s*\\d+\\s*),(\\s*\\d+\\s*)\\)")
 
     first {
-      pattern.findAll(input).map(MatchResult::groupValues).sumOf { it[1].toInt() * it[2].toInt() }
+      mul.findAll(input).map(MatchResult::groupValues).sumOf { it[1].toInt() * it[2].toInt() }
     }
 
-    second {
+    val enabledMul = Regex(pattern = "mul\\((\\s*\\d+\\s*),(\\s*\\d+\\s*)\\)|(?:do\\(\\)|don't\\(\\))")
 
+    second {
+      var enabled = true
+      input.trim().let { enabledMul.findAll(it) }.sumOf { result ->
+        when (result.value) {
+          "do()" -> enabled = true
+          "don't()" -> enabled = false
+        }
+        result.takeIf { enabled && it.value.startsWith("mul") }
+          ?.groupValues?.drop(1)?.map(String::toInt)?.let { (a, b) -> a * b } ?: 0
+      }
     }
   }
