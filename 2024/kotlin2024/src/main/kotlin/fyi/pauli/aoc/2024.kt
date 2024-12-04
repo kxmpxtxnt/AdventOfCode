@@ -8,6 +8,7 @@ fun main(): Unit = adventOfCode(2024) {
   this += listOf(
     first,
     second,
-    third
+    third,
+    forth
   )
 }
