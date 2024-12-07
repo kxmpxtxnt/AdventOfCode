@@ -12,6 +12,7 @@ fun main(): Unit = adventOfCode(2024) {
     third,
     forth,
     fifth,
-    sixth
+    sixth,
+    seventh
   )
 }
