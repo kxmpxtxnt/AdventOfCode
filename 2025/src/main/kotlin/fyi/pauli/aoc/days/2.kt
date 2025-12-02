@@ -4,7 +4,7 @@ import fyi.pauli.aoc.day
 
 val day2 = day(2) {
 
-    val ranges: Collection<LongRange> =  input.split(",").toMutableList().map {
+    val ranges: Collection<LongRange> = input.split(",").toMutableList().map {
         val (first, second) = it.split("-").map(String::trim).map(String::toLong)
         first..second
     }
@@ -19,12 +19,18 @@ val day2 = day(2) {
         }
     }
 
+    fun String.isRepeating(): Boolean = (1..length / 2)
+        .filter { length % it == 0 && length / it >= 2 }
+        .any { len ->
+            chunked(len).all { part -> part == take(len) }
+        }
+
     second = {
         ranges.sumOf { range ->
             range
                 .map(Long::toString)
-
-            0
+                .filter(String::isRepeating)
+                .sumOf(String::toLong)
         }
     }
 }
