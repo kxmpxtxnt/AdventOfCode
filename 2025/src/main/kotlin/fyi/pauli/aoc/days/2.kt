@@ -4,11 +4,10 @@ import fyi.pauli.aoc.day
 
 val day2 = day(2) {
 
-    val productIds: MutableList<String> = input.split(",").toMutableList()
-    val ranges: MutableList<LongRange> = productIds.map {
+    val ranges: Collection<LongRange> =  input.split(",").toMutableList().map {
         val (first, second) = it.split("-").map(String::trim).map(String::toLong)
         first..second
-    }.toMutableList()
+    }
 
     first = {
         ranges.sumOf { range ->
@@ -21,6 +20,11 @@ val day2 = day(2) {
     }
 
     second = {
+        ranges.sumOf { range ->
+            range
+                .map(Long::toString)
 
+            0
+        }
     }
 }
