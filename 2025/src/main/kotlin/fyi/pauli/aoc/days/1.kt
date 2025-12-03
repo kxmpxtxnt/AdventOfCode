@@ -18,7 +18,10 @@ val day1 = day(1) {
         inputLines
             .map { it.first() to it.drop(1).toInt() }
             .fold(50 to 0) { (code, zeros), (dir, amount) ->
-                val delta = when (dir) { 'L' -> -amount else -> amount }
+                val delta = when (dir) {
+                    'L' -> -amount
+                    else -> amount
+                }
                 val newCode = ((code + delta) % 100 + 100) % 100
 
                 val crossings = (0 until amount).count { step ->
