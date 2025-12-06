@@ -1,7 +1,6 @@
 package fyi.pauli.aoc.days
 
 import fyi.pauli.aoc.day
-import kotlin.math.abs
 
 val day5 = day(5) {
     val splitIndex = inputLines.indexOf("")
@@ -25,7 +24,7 @@ val day5 = day(5) {
                 } else {
                     val last = acc[acc.lastIndex]
                     acc[acc.lastIndex] = if (r.first <= last.last + 1) {
-                        last.first .. maxOf(last.last, r.last)
+                        last.first..maxOf(last.last, r.last)
                     } else {
                         acc.add(r)
                         last
