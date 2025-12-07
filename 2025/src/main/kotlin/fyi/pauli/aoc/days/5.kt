@@ -16,7 +16,6 @@ val day5 = day(5) {
 
     second = {
         ranges
-            .asSequence()
             .sortedBy { it.first }
             .fold(mutableListOf<LongRange>()) { acc, r ->
                 if (acc.lastIndex == -1) {
