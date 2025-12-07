@@ -21,4 +21,16 @@ val day7 = day(7) {
                     }
             }
     }
+
+    second = {
+        (inputLines.size - 2 downTo 2 step 2)
+            .fold(LongArray(inputLines[0].length) { 1L }) { cols, row ->
+                cols.apply {
+                    inputLines[row].withIndex()
+                        .filter { it.value == '^' }
+                        .forEach { (col, _) -> this[col] = this[col - 1] + this[col + 1] }
+                }
+            }[inputLines[0].length / 2]
+
+    }
 }
