@@ -1,6 +1,6 @@
 package fyi.pauli.aoc
 
-import fyi.pauli.aoc.days.day7
+import fyi.pauli.aoc.days.*
 
 fun main() {
     //day1()
@@ -9,5 +9,6 @@ fun main() {
     //day4()
     //day5()
     //day6()
-    day7()
+    //day7()
+    day8()
 }
